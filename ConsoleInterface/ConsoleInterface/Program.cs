@@ -8,8 +8,13 @@ namespace ConsoleInterface
         
         static async Task Main(string[] args)
         {
+            // Holds the API key
             string apiKey = "YOUR API HERE";
-            Console.WriteLine("ChatGPT Console");
+            
+            // Console interface
+            Console.Title = "ChatGPT Console Interface";
+
+            // Main loop
             while (true)
             {
                 Console.Write("Prompt: ");
@@ -17,8 +22,9 @@ namespace ConsoleInterface
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
-        static async Task<string> API(string prompt, string apiKey)
+        static async Task<string> API(string prompt, string apiKey) // Takes the prompt and the API key and returns the response
         {
+            // API call
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
             var request = new HttpRequestMessage
@@ -29,14 +35,15 @@ namespace ConsoleInterface
             };
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
+            // Response Handling
             var response = await client.SendAsync(request);
             var responseContent = await response.Content.ReadAsStringAsync();
 
             Console.ForegroundColor = ConsoleColor.Green;
-
+            
+            // Returns the Response Deserialized
             dynamic json = JsonConvert.DeserializeObject(responseContent);
             return json.choices[0].text + "\n\n";
-
 
         }
     }
