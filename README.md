@@ -32,7 +32,7 @@ The ChatGPT Console Interface is a C# program that provides a console interface 
 
 ## Dependencies:
 
-.NET Core SDK 2.2 or later
+.NET Core SDK 2.2 or later and
 Newtonsoft.Json library for JSON serialization/deserialization
 
 ## Usage:
