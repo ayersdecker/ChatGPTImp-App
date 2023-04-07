@@ -8,7 +8,7 @@ namespace ConsoleInterface
         
         static async Task Main(string[] args)
         {
-            string apiKey = "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";
+            string apiKey = "YOUR API HERE";
             Console.WriteLine("ChatGPT Console");
             while (true)
             {
@@ -25,7 +25,7 @@ namespace ConsoleInterface
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri("https://api.openai.com/v1/completions"),
-                Content = new StringContent("{\n   \"model\": \"text-davinci-003\", \"prompt\": \"" + $"{prompt}\",\n    \"max_tokens\": 50,\n    \"temperature\": 0.5\n}}")
+                Content = new StringContent("{\n   \"model\": \"text-davinci-003\", \"prompt\": \"" + $"{prompt}\",\n    \"max_tokens\": 2000,\n    \"temperature\": 0.5\n}}")
             };
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
